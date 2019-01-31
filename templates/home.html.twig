@@ -1,0 +1,36 @@
+{# empty Twig template #}
+{% extends "base.html.twig"%}
+
+{% block body %}
+<div class="section no-pad-bot blue lighten-5" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center blue-text text-darken-3">Sale of Islamic Books</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">Vente de livres</h5>
+        </div>
+        <div class="row center">
+            <a href="{{path('add')}}" class="btn-large waves-effect waves-light blue darken-3"><i class="fas fa-plus"></i> Ajout</a>
+        </div>
+        <br><br>
+    </div>
+</div>
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col m6 offset-m3">
+                <ul>
+                    <h1>Livres disponible</h1>
+                    {% for books in books %}
+
+                        <li>
+                            <h7><a href="{{ path('show',{'id':books.id}) }}">{{ books.title}}</a></h7>
+                            <a href="{{ path('edit',{'id':books.id}) }}" class="collection-item"><span class=" badge">Modifier</span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

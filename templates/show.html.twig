@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% extends "base.html.twig"%}
+
+{%block body %}
+     <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 m12">
+                    <h1>Votre livre</h1>
+                    <h3>Titre : {{book.title}}</h3>
+                    <p>Auteur : {{book.author}}</p>
+                    <p>Prix : {{book.price}} &euro; </p>
+                    {% if book.image.name is defined %}
+                    
+                        <img src="{{ asset('images/')~ book.image.name}}">
+                    {% else %}
+                        <p>Pas d'image</p>
+                    {% endif %}
+                    {% for keyword in book.keywords %}
+                        <p>{{keyword.name}}</p>
+                    {% endfor %}
+                    <a href="{{path("home")}}">Accueil </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}
